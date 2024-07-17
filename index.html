@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="wrap">
+        <main id="joinMembership-wrap">
+            <section id="joinMembership">
+                <form>
+                    <div class="iWrap name-wrap">
+                        <h6>이름</h6>
+                        <input type="text" id="name">
+                    </div>
+
+                    <div class="iWrap id-wrap">
+                        <h6>아이디</h6>    
+                        <input type="text" id="id">
+                        <p>6 ~ 16자의 소문자로 작성해주세요</p>
+                    </div>
+
+                    <div class="iWrap pw-wrap">
+                        <h6>비밀번호</h6>
+                        <input type="password" id="password">
+                    </div>
+                    
+                    <div class="iWrap pwCheck-wrap">
+                        <h6>비밀번호 확인</h6>
+                        <input type="password" id="password-check">
+                    </div>
+
+                    <div class="iWrap email-wrap">
+                        <h6>이메일</h6>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div class="btn-wrap">
+                        <button>확인</button>
+                        <button>취소</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="./js/joinMembership.js"></script>
+</body>
+</html>
