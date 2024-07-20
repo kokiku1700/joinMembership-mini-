@@ -1,10 +1,10 @@
 // 이름 포커스 기능
 const namee = document.getElementById("name");
+const nameH6 = document.getElementsByClassName("nameH6");
+const nameP = document.getElementsByClassName("nameP");
+const nameCheckP = document.getElementsByClassName("nameCheckP");
 
 namee.addEventListener('focusout', () => {
-    const nameH6 = document.getElementsByClassName("nameH6");
-    const nameP = document.getElementsByClassName("nameP");
-    const nameCheckP = document.getElementsByClassName("nameCheckP");
     // 이름 형식
     // 자음과 모음 따로 작성하면 에러
     // 한글만 가능
@@ -30,11 +30,12 @@ namee.addEventListener('focusout', () => {
 
 // id 포커스 기능
 const id = document.getElementById("id");
+const idH6 = document.getElementsByClassName("idH6");
+const idP = document.getElementsByClassName("idP");
+const idPStr = document.getElementsByClassName("idP-str");
 
 id.addEventListener('focusout', () => {
-    const idH6 = document.getElementsByClassName("idH6");
-    const idP = document.getElementsByClassName("idP");
-    const idPStr = document.getElementsByClassName("idP-str");
+
     // 처음 한 자리는 영어만 가능 
     // 그 다음부터 20자리 까지 대문자와 소문자, 숫자 가능
     // 최소 6자리부터 20자리 까지
@@ -60,11 +61,11 @@ id.addEventListener('focusout', () => {
 
 // 비밀번호 포커스 기능
 const pw = document.getElementById("password");
+const pwH6 = document.getElementsByClassName("pwH6");
+const pwP = document.getElementsByClassName("pwP");
+const pwPStr = document.getElementsByClassName("pwP-str");
 
 pw.addEventListener("focusout", () => {
-    const pwH6 = document.getElementsByClassName("pwH6");
-    const pwP = document.getElementsByClassName("pwP");
-    const pwPStr = document.getElementsByClassName("pwP-str");
     //
     const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
@@ -88,14 +89,17 @@ pw.addEventListener("focusout", () => {
 
 // 비밀번호 확인 포커스 기능
 const pwCheck = document.getElementById("password-check");
+const pwCheckH6 = document.getElementsByClassName("pwCheckH6");
+const pwCheckP = document.getElementsByClassName("pwCheckP");
 
 pwCheck.addEventListener("focusout", () => {
-    const pwCheckH6 = document.getElementsByClassName("pwCheckH6");
-    const pwCheckP = document.getElementsByClassName("pwCheckP");
-
     // 위 비밀번호와 같으면 정상 처리
     // 아무 것도 입력하지 않거나 위 비밀번호와 다르면 에러
     if ( pwCheck.value === "" || pw.value !== pwCheck.value ) {
+        pwCheckP[0].style.display = "block";
+        pwCheckH6[0].style.color = "red";
+        pwCheck.style.border = "2px solid red";
+    } else if ( pw.style.border === "2px solid red" ) {
         pwCheckP[0].style.display = "block";
         pwCheckH6[0].style.color = "red";
         pwCheck.style.border = "2px solid red";
@@ -108,11 +112,11 @@ pwCheck.addEventListener("focusout", () => {
 
 // 이메일 포커스 기능
 const email = document.getElementById("email");
+const emailH6 = document.getElementsByClassName("emailH6");
+const emailP = document.getElementsByClassName("emailP");
+const emailCheckP = document.getElementsByClassName("emailCheckP");
 
 email.addEventListener("focusout", () => {
-    const emailH6 = document.getElementsByClassName("emailH6");
-    const emailP = document.getElementsByClassName("emailP");
-    const emailCheckP = document.getElementsByClassName("emailCheckP");
     // 이메일 형식이다. 
     // @ 앞에 아이디는 소문자와 숫자만 가능
     // @ 뒤에 주소는 소문자와 영어만 가능 그리고 . 뒤는 소문자만 가능
@@ -134,4 +138,35 @@ email.addEventListener("focusout", () => {
         emailH6[0].style.color = "rgb(29, 238, 54)";
         email.style.border = "2px solid rgb(29, 238, 54)";
     }
+});
+
+// 이 버튼을 클릭하면 모두 초기화된다.
+const cancelBtn = document.getElementsByClassName("cancelBtn");
+
+cancelBtn[0].addEventListener('click', () => {
+
+    nameP[0].style.display = "none";
+    nameCheckP[0].style.display = "none";
+    nameH6[0].style.color = "#aaa";
+    namee.style.border = "2px solid #aaa";
+
+    idP[0].style.display = "none";
+    idPStr[0].style.display = "none";
+    idH6[0].style.color = "#aaa";
+    id.style.border = "2px solid #aaa";
+
+    pwP[0].style.display = "none";
+    pwPStr[0].style.display = "none";
+    pwH6[0].style.color = "#aaa";
+    pw.style.border = "2px solid #aaa";
+
+    pwCheckP[0].style.display = "none";
+    pwCheckH6[0].style.color = "#aaa";
+    pwCheck.style.border = "2px solid #aaa";
+
+    emailP[0].style.display = "none";
+    emailCheckP[0].style.display = "none";
+    emailH6[0].style.color = "#aaa";
+    email.style.border = "2px solid #aaa";
+  
 });
