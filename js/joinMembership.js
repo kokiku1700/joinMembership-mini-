@@ -143,30 +143,72 @@ email.addEventListener("focusout", () => {
 // 이 버튼을 클릭하면 모두 초기화된다.
 const cancelBtn = document.getElementsByClassName("cancelBtn");
 
-cancelBtn[0].addEventListener('click', () => {
-
+function init () {
+    namee.value = ""
     nameP[0].style.display = "none";
     nameCheckP[0].style.display = "none";
     nameH6[0].style.color = "#aaa";
     namee.style.border = "2px solid #aaa";
 
+    id.value = "";
     idP[0].style.display = "none";
     idPStr[0].style.display = "none";
     idH6[0].style.color = "#aaa";
     id.style.border = "2px solid #aaa";
 
+    pw.value = "";
     pwP[0].style.display = "none";
     pwPStr[0].style.display = "none";
     pwH6[0].style.color = "#aaa";
     pw.style.border = "2px solid #aaa";
 
+    pwCheck.value = "";
     pwCheckP[0].style.display = "none";
     pwCheckH6[0].style.color = "#aaa";
     pwCheck.style.border = "2px solid #aaa";
 
+    email.value = "";
     emailP[0].style.display = "none";
     emailCheckP[0].style.display = "none";
     emailH6[0].style.color = "#aaa";
     email.style.border = "2px solid #aaa";
-  
+}
+
+cancelBtn[0].addEventListener('click', init);
+
+// 확인 버튼 클릭 시 입력 정보가 모두 정확하면 
+// 로컬 스토리지에 저장
+const submitBtn = document.getElementsByClassName("submitBtn");
+const formAll = document.getElementsByClassName("formAll");
+let submitCheck = [namee, id, pw, pwCheck, email];
+let submitBool = false;
+
+submitBtn[0].addEventListener('click', () => {
+    for ( let i = 0; i < submitCheck.length; i++ ) {
+        if ( submitCheck[i].style.border !== "2px solid rgb(29, 238, 54)" ) {
+            submitCheck[i].focus();
+            submitBool = false;
+            break;
+        } else {
+            submitBool = true;
+        }
+    }
+    if ( submitBool === true ) {
+        let key = id.value;
+        let valueV = 
+        {
+            "이름": namee.value,
+            "패스워드": pw.value,
+            "이메일": email.value 
+        };
+        let objValue = JSON.stringify(valueV);
+        localStorage.setItem(key, objValue);
+        alert(`
+            환영합니다. ${namee.value}님
+            id: ${id.value}
+            pw: ${pw.value}
+            email: ${email.value}
+            `);
+        init();
+    }
 });
